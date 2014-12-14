@@ -4,7 +4,7 @@ pi=3.141592653589793
 e=2.718281828459045
 
 #One line integration (rectangular)
-integrate=lambda f,a,b,dx=0.0001:sum(map(lambda x:f(x*dx+a)*dx,range(0,int(b/dx)-int(a/dx))))
+integrate=lambda f,a,b,dx=0.0001:sum(map(lambda x:f(x*dx+a)*dx,range(0,int(b/dx)-int(a/dx)))) if a<b else -integrate(f,b,a,dx)
 
 #One line factorial
 factorial=lambda n:reduce(mul,range(2,n+1),1)
