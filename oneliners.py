@@ -30,10 +30,13 @@ gagm=lambda x,y,n=10:(x*y)**0.5 if n==1 else (aagm(x,y,n-1)*gagm(x,y,n-1))**0.5
 #One line ln approximation
 ln=lambda x,m=50:pi/(2*aagm(1,4/(x*2**m)))-m*ln2
 
-#One line li approximation
+#One line li Ramanujan's approximation
 li=lambda x,m=50:euler_gamma+ln(ln(x))+x**0.5*sum(map(lambda n:((-1)**(n-1)*ln(x)**n)/(factorial(n)*2**(n-1))*sum(map(lambda k:1/(2*k+1),range(int((n-1)/2)+1))),range(1,m+1)))
 
-#One line gamma Lanczo approximation
+#One line erf approximation
+erf=lambda x:1/(1+0.5*abs(x))*e**(-x**2+sum(map(lambda i:[-1.26551223,1.00002368,0.37409196,0.09678418,-0.18628806,0.27886807,-1.13520398,1.48851587,-0.82215223,0.17087277][i]*(1/(1+0.5*abs(x)))**i,range(10))))-1 if x<=0 else -erf(-x)
+
+#One line gamma Lanczo's approximation
 gamma=lambda z:((2*pi)**0.5)*((complex(z)+6.5)**(complex(z)-0.5))*(e**(-complex(z)-6.5))*sum(map(lambda i:[0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7][i]/((complex(z)-1+i) if i!=0 else 1),range(9))) if complex(z).real>=0.5 else pi/(sin(pi*z)*gamma(1-z))
 
 #One line zeta alternating series approximation
