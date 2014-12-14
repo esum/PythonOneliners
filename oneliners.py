@@ -6,6 +6,9 @@ e=2.718281828459045
 #One line integration (rectangular)
 integrate=lambda f,a,b,dx=0.0001:sum(map(lambda x:f(x*dx+a)*dx,range(0,int(b/dx)-int(a/dx)))) if a<b else -integrate(f,b,a,dx)
 
+#One line derivate
+derivate= lambda f,x,dx=0.0001,side=0:((f(x+dx)-f(x))/dx + (f(x-dx)-f(x))/-dx)/2 if side==0 else (f(x+dx)-f(x))/dx if side>0 else (f(x-dx)-f(x))/-dx
+
 #One line factorial
 factorial=lambda n:reduce(mul,range(2,n+1),1)
 
