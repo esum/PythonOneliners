@@ -45,3 +45,6 @@ gamma=lambda z:((2*pi)**0.5)*((complex(z)+6.5)**(complex(z)-0.5))*(e**(-complex(
 #One line zeta alternating series approximation
 dk=lambda k,n:n*reduce(lambda y,j:y+(factorial(n+j-1)*4**j)/(factorial(n-j)*factorial(2*j)),range(k,n+1),0)
 zeta=lambda s,n=50:1/(dk(0,n)*(1-2**(1-s)))*reduce(lambda y,k:y+(-1)**(k-1)*dk(k,n)/(k**s),range(n+1))
+
+#One line cartesian product
+product=lambda *iterables: [(k,*l) for l in product(*iterables[1:]) for k in iterables[0]] if iterables else [()]
